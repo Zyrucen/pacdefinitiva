@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="pac">
+    <class name="pac.Alumno" table="alumnos">
+        <id name="id" type="java.lang.Long">
+            <column name="idAlumno" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" />
+        </property>
+        <!-- Mapeo de la relación con Modulo -->
+        <set name="modulos" table="alumno_modulo" cascade="all">
+            <key column="idAlumno" />
+            <many-to-many class="pac.Modulo" column="idModulo" />
+        </set>
+        
+        
+    </class>
+</hibernate-mapping>
+    
